@@ -6,4 +6,5 @@ export default function Home() {
     <h1>Welcome to the Farmer Market Dashboard</h1>
     <p>Use the navigation to explore the dashboard.</p>
   </div>
+  // i like websites 
 }
