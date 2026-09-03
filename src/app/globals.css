@@ -1,4 +1,4 @@
-@import "tailwindcss";
+/* @import "tailwindcss";
 
 :root {
   --background: 255 255 255;
@@ -27,4 +27,47 @@
   .border-border {
     border-color: var(--color-border);
   }
+} */
+@import "tailwindcss";
+
+@theme {
+  --color-background: #F5F2EB;
+  --color-foreground: #1A1A1A;
+  --color-card: #FFFFFF;
+  --color-card-foreground: #1A1A1A;
+  --color-primary: #1A3685;
+  --color-primary-foreground: #FFFFFF;
+  --color-secondary: #1D3B8B;
+  --color-secondary-foreground: #FFFFFF;
+  --color-muted: #EFEFEF;
+  --color-muted-foreground: #4A4A4A;
+  --color-accent: #2A4BA0;
+  --color-accent-foreground: #FFFFFF;
+  --color-border: #E5E5E5;
+  --color-input: #E5E5E5;
+  --color-ring: #1A3685;
+  --color-hover-blue: #EBF0F8;
+  --radius: 0.75rem;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+  }
+}
+
+@utility border-border {
+  border-color: var(--color-border);
+}
+
+@utility bg-background {
+  background-color: var(--color-background);
+}
+
+@utility text-foreground {
+  color: var(--color-foreground);
 }

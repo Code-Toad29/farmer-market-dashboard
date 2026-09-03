@@ -1,28 +1,11 @@
 import { NextResponse } from "next/server";
-import { query } from "@/lib/db";
+import { getListings } from "@/lib/data";
 
 // GET - Fetch all listings
 export async function GET() {
   try {
-    const rows = await query(`
-      SELECT 
-        p.id,
-        p.product_name as name,
-        c.category_name as category,
-        f.farmer_name as farmer,
-        f.farm_name as farm,
-        p.price_per_kg as price,
-        p.quantity_kg as quantity,
-        p.is_available as available,
-        p.harvest_date,
-        p.created_at
-      FROM produce p
-      JOIN categories c ON c.id = p.category_id
-      JOIN farmers f ON f.id = p.farmer_id
-      ORDER BY p.created_at DESC
-    `);
-
-    return NextResponse.json(rows);
+   const rows = await getListings();
+    return NextResponse.json(rows.rows);
   } catch (error) {
     console.error("Error fetching listings:", error);
     return NextResponse.json(
