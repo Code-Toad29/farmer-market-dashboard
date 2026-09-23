@@ -79,8 +79,8 @@ export function ListingsTable({ initialData }: Props) {
 
     // Sort
     data.sort((a, b) => {
-      let valA: any = a[sortBy];
-      let valB: any = b[sortBy];
+      let valA: string | number | Date = a[sortBy];
+      let valB: string | number | Date = b[sortBy];
       if (sortBy === "price") { valA = a.price; valB = b.price; }
       if (sortBy === "harvest_date") { valA = new Date(a.harvest_date); valB = new Date(b.harvest_date); }
       if (valA < valB) return sortOrder === "asc" ? -1 : 1;

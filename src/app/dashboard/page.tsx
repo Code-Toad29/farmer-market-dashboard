@@ -1,9 +1,25 @@
-import React from 'react'
+import {
+  getDashboardStats,
+  getListingsByCategory,
+  getOrderStatusDistribution,
+  getRecentOrders,
+} from "@/lib/data";
+import { DashboardOverview } from "@/components/dashboard/DashboardOverview";
 
-function Dashboard() {
+export default async function DashboardPage() {
+  const [stats, categoryData, statusData, recentOrders] = await Promise.all([
+    getDashboardStats(),
+    getListingsByCategory(),
+    getOrderStatusDistribution(),
+    getRecentOrders(5),
+  ]);
+
   return (
-    <div>Dashboard</div>
-  )
+    <DashboardOverview
+      stats={stats}
+      categoryData={categoryData}
+      statusData={statusData}
+      recentOrders={recentOrders}
+    />
+  );
 }
-
-export default Dashboard

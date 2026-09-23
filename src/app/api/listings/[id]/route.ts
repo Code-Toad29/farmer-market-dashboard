@@ -68,7 +68,7 @@ export async function PATCH(
 
     const body = await request.json();
     const updates: string[] = [];
-    const values: any[] = [];
+    const values: Array<string | number | boolean | null> = [];
     let paramIndex = 1;
 
     // Build dynamic update query

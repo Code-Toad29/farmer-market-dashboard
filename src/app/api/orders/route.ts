@@ -25,7 +25,7 @@ export async function GET(request: Request) {
       JOIN order_status os ON os.id = o.status_id
     `;
 
-    const values: any[] = [];
+    const values: string[] = [];
     if (status && status !== "All") {
       queryText += ` WHERE os.status_name = $1`;
       values.push(status);
@@ -34,7 +34,7 @@ export async function GET(request: Request) {
 
     const rows = await query(queryText, values);
     return NextResponse.json(rows);
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       { message: "Failed to fetch orders" },
       { status: 500 }
@@ -64,7 +64,7 @@ export async function POST(request: Request) {
       },
       { status: 201 }
     );
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       { message: "Failed to place order" },
       { status: 400 }
