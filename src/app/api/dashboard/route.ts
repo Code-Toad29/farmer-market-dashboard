@@ -57,7 +57,7 @@ export async function GET() {
       orderStatusData,
       topFarmers,
     });
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       { message: "Failed to fetch dashboard data" },
       { status: 500 }

@@ -1,13 +1,13 @@
 import { NextResponse } from "next/server";
 import { getListings } from "@/lib/data";
+import { query } from "@/lib/db";
 
 // GET - Fetch all listings
 export async function GET() {
   try {
-   const rows = await getListings();
-    return NextResponse.json(rows.rows);
-  } catch (error) {
-    console.error("Error fetching listings:", error);
+    const rows = await getListings();
+    return NextResponse.json(rows);
+  } catch {
     return NextResponse.json(
       { message: "Failed to fetch listings" },
       { status: 500 }
@@ -52,8 +52,7 @@ export async function POST(request: Request) {
       },
       { status: 201 }
     );
-  } catch (error) {
-    console.error("Error creating listing:", error);
+  } catch {
     return NextResponse.json(
       { message: "Failed to create listing" },
       { status: 400 }

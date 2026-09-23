@@ -19,7 +19,7 @@ export async function GET() {
       ORDER BY r.created_at DESC
     `);
     return NextResponse.json(rows);
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       { message: "Failed to fetch reviews" },
       { status: 500 }
@@ -66,7 +66,7 @@ export async function POST(request: Request) {
       },
       { status: 201 }
     );
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       { message: "Failed to create review" },
       { status: 400 }

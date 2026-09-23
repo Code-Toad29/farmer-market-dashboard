@@ -61,7 +61,7 @@ export async function PATCH(
       message: `Order ${action}ed successfully`,
       status: statusMap[action].to
     });
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       { message: "Failed to update order status" },
       { status: 400 }

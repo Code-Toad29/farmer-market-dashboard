@@ -2,8 +2,7 @@ import { getListings } from "@/lib/data";
 import { ListingsTable } from "@/components/tables/ListingsTable";
 
 export default async function ListingsPage() {
-  // Fetch data on the server
-  const listings = (await getListings());
+  const listings = await getListings();
 
   return (
     <div>
@@ -19,8 +18,8 @@ export default async function ListingsPage() {
           + Add New Listing
         </a>
       </div>
-      <h1>{listings.rowCount} Listings</h1>
-      <ListingsTable initialData={listings.rows} />
+      <h1>{listings.length} Listings</h1>
+      <ListingsTable initialData={listings} />
     </div>
   );
 }

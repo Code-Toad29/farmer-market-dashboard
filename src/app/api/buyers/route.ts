@@ -17,7 +17,7 @@ export async function GET() {
       ORDER BY b.buyer_name
     `);
     return NextResponse.json(rows);
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       { message: "Failed to fetch buyers" },
       { status: 500 }
@@ -57,7 +57,7 @@ export async function POST(request: Request) {
       },
       { status: 201 }
     );
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       { message: "Failed to create buyer" },
       { status: 400 }

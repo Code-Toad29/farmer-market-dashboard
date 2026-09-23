@@ -20,7 +20,7 @@ export async function GET() {
       ORDER BY f.farmer_name
     `);
     return NextResponse.json(rows);
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       { message: "Failed to fetch farmers" },
       { status: 500 }
@@ -61,7 +61,7 @@ export async function POST(request: Request) {
       },
       { status: 201 }
     );
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       { message: "Failed to create farmer" },
       { status: 400 }
